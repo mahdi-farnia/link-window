@@ -7,19 +7,19 @@ export default function RecentPanel({}) {
   const recents = useSelector((store) => store.recents);
 
   return (
-    <section id='recent-panel'>
-      <button id='close-recent-panel'>
+    <section id="recent-panel">
+      <button id="close-recent-panel">
         <label>
           <span></span>
           <span></span>
         </label>
         <span>close</span>
       </button>
-      <header className='recent-panel__header'>
+      <header className="recent-panel__header">
         <h2>Recents</h2>
       </header>
-      <div className='recents-wrapper'>
-        <ul id='recents'>
+      <div className="recents-wrapper">
+        <ul id="recents">
           {recents ? (
             recents.map((recent) => (
               <RecentItem
@@ -29,7 +29,7 @@ export default function RecentPanel({}) {
               />
             ))
           ) : (
-            <span className='empty'>No Recent Found!</span>
+            <span className="empty">No Recent Found!</span>
           )}
         </ul>
       </div>
