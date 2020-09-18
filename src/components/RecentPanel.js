@@ -20,14 +20,17 @@ export default function RecentPanel({}) {
       </header>
       <div className="recents-wrapper">
         <ul id="recents">
-          {recents ? (
-            recents.map((recent) => (
-              <RecentItem
-                name={recent.name}
-                url={recent.url}
-                key={recent.url}
-              />
-            ))
+          {Array.isArray(recents) ? (
+            recents
+              // Sort By Most Visited -> 5, 4, 3, 2, 1
+              .sort((a, b) => b.visited - a.visited)
+              .map((recent) => (
+                <RecentItem
+                  name={recent.name}
+                  url={recent.url}
+                  key={recent.url}
+                />
+              ))
           ) : (
             <span className="empty">No Recent Found!</span>
           )}
