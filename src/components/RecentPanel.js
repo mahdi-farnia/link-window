@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../style/recent-panel.css';
 import { useSelector } from 'react-redux';
 import RecentItem from './RecentItem';
 
 export default function RecentPanel({}) {
-  const recents = useSelector((store) => store.recents);
+  const recents = useSelector((store) => store.recents),
+    recentPanel = useRef(null);
 
   return (
-    <section id="recent-panel">
-      <button id="close-recent-panel" title="Close Recents">
+    <section ref={recentPanel} id="recent-panel" className="close">
+      <button
+        id="close-recent-panel"
+        title="Close Recents"
+        onClick={() => recentPanel.current.classList.toggle('close')}
+      >
         <label>
           <span className="row-1"></span>
           <span className="row-2"></span>

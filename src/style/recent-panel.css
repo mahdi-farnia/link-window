@@ -11,14 +11,49 @@
   right: 0;
   z-index: var(--highest-z-index);
   box-shadow: 4px 0 20px 0 #ccc;
+  overflow: hidden;
+  will-change: width;
+  transition: width 0.4s ease-in-out;
+}
+/* Close Animation */
+#recent-panel.close {
+  width: 60px;
 }
 
-/* TODO: */
+#recent-panel.close #close-recent-panel label .row-1 {
+  transform: rotate(0) translateY(-2px);
+}
+
+#recent-panel.close #close-recent-panel label .row-2 {
+  transform: rotate(0) translateY(2px);
+}
+
+#recent-panel.close .recent-panel__header {
+  transform: rotate(90deg) translateX(5px) scale(0.7);
+}
+
+#recent-panel.close #recents > .empty {
+  opacity: 0;
+}
+
+#recent-panel.close .recents-wrapper {
+  padding: 20px 10px;
+}
+
+#recent-panel.close #recents .favicon {
+  left: 6px;
+}
+
+#recent-panel.close #recents .url-name {
+  padding-left: 40px;
+}
+/**/
+
 #close-recent-panel {
   width: 25px;
   height: 25px;
   position: absolute;
-  right: 20px;
+  right: 17.5px;
   top: 20px;
   cursor: pointer;
 }
@@ -39,14 +74,15 @@
   display: block;
   background-color: var(--default-theme-text-color);
   border-radius: 2px;
+  transition: transform 0.3s ease;
 }
 
 #close-recent-panel .row-1 {
-  transform: rotate(45deg);
+  transform: rotate(45deg) translateY(0);
 }
 
 #close-recent-panel .row-2 {
-  transform: rotate(-45deg);
+  transform: rotate(-45deg) translateY(0);
   transform-origin: 40% 50%;
 }
 
@@ -56,12 +92,14 @@
   text-align: center;
   margin: 20px 0;
   font-size: 1.4em;
+  transition: transform 0.3s ease-in-out;
 }
 
 .recents-wrapper {
   width: 100%;
   flex: 1;
   padding: 20px;
+  transition: padding 0.3s ease;
 }
 
 #recents {
@@ -75,6 +113,10 @@
   display: block;
   text-align: center;
   font-weight: 600;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 #recents > .empty::after {
@@ -92,6 +134,7 @@
 #recents li {
   width: 100%;
   height: 45px;
+  min-width: max-content;
   line-height: 45px;
   font-weight: 400;
   font-size: 18px;
@@ -115,6 +158,7 @@
   border-radius: 50%;
   pointer-events: none;
   text-transform: capitalize;
+  transform: left 0.3s ease;
 }
 
 #recents .favicon.loading {
@@ -164,10 +208,12 @@
   background: url('../assets/rename.svg') no-repeat center;
   background-size: 20px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 #recents .delete {
   background: url('../assets/trash.svg') no-repeat;
   background-position: center 8px;
   background-size: 25px;
+  cursor: pointer;
 }
