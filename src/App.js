@@ -1,8 +1,12 @@
 import React from 'react';
-import './App.css';
+import RecentPanel from './components/RecentPanel';
 
 function App() {
-  return <div className='App'></div>;
+  return (
+    <>
+      <RecentPanel />
+    </>
+  );
 }
 
 export default App;
