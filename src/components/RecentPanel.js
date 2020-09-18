@@ -8,12 +8,11 @@ export default function RecentPanel({}) {
 
   return (
     <section id="recent-panel">
-      <button id="close-recent-panel">
+      <button id="close-recent-panel" title="Close Recents">
         <label>
-          <span></span>
-          <span></span>
+          <span className="row-1"></span>
+          <span className="row-2"></span>
         </label>
-        <span>close</span>
       </button>
       <header className="recent-panel__header">
         <h2>Recents</h2>
