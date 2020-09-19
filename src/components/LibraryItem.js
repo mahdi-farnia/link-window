@@ -10,7 +10,7 @@ export default function LibraryItem({ name, url }) {
     requestUrl = new URL(redirectUrl).hostname;
 
   useEffect(() => {
-    // Get Favicon
+    // Get Favicon Url
     fetch(`http://favicongrabber.com/api/grab/${requestUrl}`)
       .then((res) => res.json())
       .then((json) => {
@@ -18,7 +18,14 @@ export default function LibraryItem({ name, url }) {
           const iconObj =
             json.icons.find((icon) => icon.type === 'image/x-icon') ||
             json.icons.find((icon) => icon.type === 'image/png');
-          setIcon({ src: iconObj.src, isLoading: false });
+          // Getting Icon
+          fetch(iconObj.src)
+            .then((res) => res.blob())
+            .then((blob) => {
+              const src = URL.createObjectURL(blob);
+              setIcon({ src, isLoading: false });
+            })
+            .catch((e) => setIcon({ src: '', isLoading: false }));
         } else setIcon({ src: '', isLoading: false });
       })
       .catch((e) => setIcon({ src: '', isLoading: false }));
