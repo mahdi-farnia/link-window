@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import loadingFavicon from '../assets/loading.svg';
 
-export default function RecentItem({ name, url }) {
+export default function LibraryItem({ name, url }) {
   // Use Loading Favicon First
   const [icon, setIcon] = useState({ src: loadingFavicon, isLoading: true }),
     // If Image Not Loaded Use Name Instead
-    [textIcon, setTextIcon] = useState(name[0] + name[1]),
+    textIcon = name[0] + name[1],
     redirectUrl = /https:\/\/|http:\/\//.exec(url + '') ? url : 'http://' + url,
-    requestUrl = (url + '').replace(/https:\/\/|http:\/\//, '');
+    requestUrl = new URL(redirectUrl).hostname;
 
   useEffect(() => {
     // Get Favicon
@@ -15,14 +15,14 @@ export default function RecentItem({ name, url }) {
       .then((res) => res.json())
       .then((json) => {
         if (json.icons) {
-          const iconObj = json.icons.find(
-            (icon) => icon.type === 'image/x-icon'
-          );
+          const iconObj =
+            json.icons.find((icon) => icon.type === 'image/x-icon') ||
+            json.icons.find((icon) => icon.type === 'image/png');
           setIcon({ src: iconObj.src, isLoading: false });
         } else setIcon({ src: '', isLoading: false });
       })
       .catch((e) => setIcon({ src: '', isLoading: false }));
-  }, []);
+  }, [requestUrl]);
 
   return (
     <li title={name || 'NO NAME'}>
@@ -40,12 +40,12 @@ export default function RecentItem({ name, url }) {
       >
         {name || 'NO NAME'}
       </a>
-      <div className="recent-item__option">
-        <span className="rename"></span>
-        <span className="delete"></span>
+      <div className="link-item__option">
+        <span className="rename" title="Rename Link"></span>
+        <span className="delete" title="Delete Link"></span>
       </div>
     </li>
   );
 }
 
-React.memo(RecentItem);
+React.memo(LibraryItem);

@@ -1,38 +1,38 @@
 // Types Goes Here
 export const Action = {
-  addUrl: 'ADD_URL',
-  removeUrl: 'REMOVE_URL',
-  renameUrl: 'RENAME_URL'
+  addToLibrary: 'ADD_TO_LIBRARY',
+  removeFromLibrary: 'REMOVE_FROM_LIBRARY',
+  renameLink: 'RENAME_LINK'
 };
 
 /**
- * @param {{url: string, name: string, visited: 0, dateCreated: number}} newUrl
+ * @param {{url: string, name: string, visited: 0, dateCreated: number}} newLink
  */
-export function addUrl(newUrl) {
+export function addToLibrary(newLink) {
   return {
-    type: Action.addUrl,
-    newUrl
+    type: Action.addToLibrary,
+    newLink
   };
 }
 
 /**
- * @param {string} oldUrl
+ * @param {string} oldLinkUrl
  */
-export function removeUrl(oldUrl) {
+export function removeFromLibrary(oldLinkUrl) {
   return {
-    type: Action.removeUrl,
-    oldUrl
+    type: Action.removeFromLibrary,
+    oldLinkUrl
   };
 }
 
 /**
- * @param {string} url
- * @param {string} newName
+ * @param {string} linkUrl
+ * @param {string} newLinkName
  */
-export function renameUrl(url, newName) {
+export function renameLink(linkUrl, newLinkName) {
   return {
-    type: Action.renameUrl,
-    url,
-    newName
+    type: Action.renameLink,
+    linkUrl,
+    newLinkName
   };
 }

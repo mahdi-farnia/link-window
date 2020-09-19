@@ -1,11 +1,11 @@
 import React from 'react';
-import RecentPanel from './components/RecentPanel';
+import LibraryPanel from './components/LibraryPanel';
 import SearchField from './components/SearchField';
 
 function App() {
   return (
     <>
-      <RecentPanel />
+      <LibraryPanel />
       <SearchField />
     </>
   );

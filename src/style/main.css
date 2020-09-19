@@ -13,9 +13,9 @@
   --default-theme-background-color: #f1f1f1;
   --default-theme-text-color: #2d2d2d;
   --primary-color: #2196f3;
-  --recent-panel-default-width: 400px;
+  --library-panel-default-width: 400px;
   --highest-z-index: 10;
-  --recent-panel-minimized-width: 60px;
+  --library-panel-minimized-width: 60px;
 }
 
 body {

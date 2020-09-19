@@ -1,5 +1,5 @@
-#recent-panel {
-  width: var(--recent-panel-default-width);
+#library-panel {
+  width: var(--library-panel-default-width);
   height: 100vh;
   background-color: var(--default-theme-background-color);
   display: flex;
@@ -16,40 +16,42 @@
   transition: width 0.4s ease-in-out;
 }
 /* Close Animation */
-#recent-panel.close {
-  width: var(--recent-panel-minimized-width);
+#library-panel.close {
+  width: var(--library-panel-minimized-width);
 }
 
-#recent-panel.close #close-recent-panel label .row-1 {
+#library-panel.close #close-library-panel label .row-1 {
+  background-color: crimson;
   transform: rotate(0) translateY(-2px);
 }
 
-#recent-panel.close #close-recent-panel label .row-2 {
+#library-panel.close #close-library-panel label .row-2 {
+  background-color: #2196f3;
   transform: rotate(0) translateY(2px);
 }
 
-#recent-panel.close .recent-panel__header {
+#library-panel.close .library-panel__header {
   transform: rotate(90deg) translateX(5px) scale(0.7);
 }
 
-#recent-panel.close #recents > .empty {
+#library-panel.close #links > .empty {
   opacity: 0;
 }
 
-#recent-panel.close .recents-wrapper {
+#library-panel.close .links-wrapper {
   padding: 20px 10px;
 }
 
-#recent-panel.close #recents .favicon {
+#library-panel.close #links .favicon {
   left: 6px;
 }
 
-#recent-panel.close #recents .url-name {
+#library-panel.close #links .url-name {
   padding-left: 40px;
 }
 /**/
 
-#close-recent-panel {
+#close-library-panel {
   width: 25px;
   height: 25px;
   position: absolute;
@@ -58,7 +60,7 @@
   cursor: pointer;
 }
 
-#close-recent-panel label {
+#close-library-panel label {
   width: 100%;
   height: 100%;
   display: flex;
@@ -68,26 +70,26 @@
   pointer-events: none;
 }
 
-#close-recent-panel span {
+#close-library-panel span {
   width: 20px;
   height: 2px;
   display: block;
   background-color: var(--default-theme-text-color);
   border-radius: 2px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-#close-recent-panel .row-1 {
+#close-library-panel .row-1 {
   transform: rotate(45deg) translateY(0);
 }
 
-#close-recent-panel .row-2 {
+#close-library-panel .row-2 {
   transform: rotate(-45deg) translateY(0);
   transform-origin: 40% 50%;
 }
 
-.recent-panel__header,
-.recent-panel__header h2 {
+.library-panel__header,
+.library-panel__header h2 {
   width: 100%;
   text-align: center;
   margin: 20px 0;
@@ -95,20 +97,20 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.recents-wrapper {
+.links-wrapper {
   width: 100%;
   flex: 1;
   padding: 20px;
   transition: padding 0.3s ease;
 }
 
-#recents {
+#links {
   width: 100%;
   height: 100%;
   overflow: hidden auto;
 }
 
-#recents > .empty {
+#links > .empty {
   width: 100%;
   display: block;
   text-align: center;
@@ -119,7 +121,7 @@
   transition: opacity 0.3s ease;
 }
 
-#recents > .empty::after {
+#links > .empty::after {
   content: '';
   width: 100%;
   height: 100%;
@@ -131,7 +133,7 @@
   pointer-events: none;
 }
 
-#recents li {
+#links li {
   width: 100%;
   height: 45px;
   min-width: max-content;
@@ -144,7 +146,7 @@
   position: relative;
 }
 
-#recents .favicon {
+#links .favicon {
   width: 25px;
   height: 25px;
   background-size: contain;
@@ -158,10 +160,10 @@
   border-radius: 50%;
   pointer-events: none;
   text-transform: capitalize;
-  transform: left 0.3s ease;
+  transition: left 0.3s ease;
 }
 
-#recents .favicon.loading {
+#links .favicon.loading {
   transform: rotate(0deg);
   background-size: 80%;
   animation: loading 0.6s linear infinite;
@@ -174,8 +176,8 @@
   }
 }
 
-#recents .url-name {
-  flex: 1;
+#links .url-name {
+  width: 255px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -184,15 +186,16 @@
   transition: padding-left 0.3s ease;
 }
 
-#recents .url-name:hover {
+#links .url-name:hover {
   padding-left: 40px;
 }
 
-#recents .recent-item__option {
+#links .link-item__option {
+  width: 105px;
   height: 100%;
 }
 
-#recents .recent-item__option > span {
+#links .link-item__option > span {
   width: 45px;
   height: 100%;
   display: inline-block;
@@ -200,18 +203,18 @@
   transition: background-color 0.3s ease;
 }
 
-#recents .recent-item__option > span:hover {
+#links .link-item__option > span:hover {
   background-color: #ddd;
 }
 
-#recents .rename {
+#links .rename {
   background: url('../assets/rename.svg') no-repeat center;
   background-size: 20px;
   margin-right: 15px;
   cursor: pointer;
 }
 
-#recents .delete {
+#links .delete {
   background: url('../assets/trash.svg') no-repeat;
   background-position: center 8px;
   background-size: 25px;

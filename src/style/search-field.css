@@ -6,7 +6,7 @@
   position: relative;
   top: 150px;
   left: 0;
-  padding-left: calc(var(--recent-panel-minimized-width) + 10px);
+  padding-left: calc(var(--library-panel-minimized-width) + 10px);
   padding-right: 10px;
 }
 
