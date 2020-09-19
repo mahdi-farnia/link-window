@@ -17,7 +17,7 @@
 }
 /* Close Animation */
 #recent-panel.close {
-  width: 60px;
+  width: var(--recent-panel-minimized-width);
 }
 
 #recent-panel.close #close-recent-panel label .row-1 {

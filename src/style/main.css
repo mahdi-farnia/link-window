@@ -15,6 +15,7 @@
   --primary-color: #2196f3;
   --recent-panel-default-width: 400px;
   --highest-z-index: 10;
+  --recent-panel-minimized-width: 60px;
 }
 
 body {
