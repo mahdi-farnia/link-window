@@ -1,0 +1,7 @@
+add:
+    rename*
+    remove*
+    visited*
+    group by
+    filter by
+    google search
