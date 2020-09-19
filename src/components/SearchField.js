@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../style/search-field.css';
 import { addToLibrary } from '../actions';
 
-// const APIKEY = 'AIzaSyAA0muLeuu726-eSkL7gwXeq-fJJ-AGa5o';
-
 const urlRegExp = /[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 
 // Suggest
@@ -47,7 +45,9 @@ const inputSetting = (e, complete, setComplete, submitDispatch, links = []) => {
       Url = new URL(
         /https:\/\/|http:\/\//.exec(value + '') ? value : 'http://' + value
       ),
-      url = Url.href;
+      url = Url.href,
+      // Prevent Write HTTP/HTTPS
+      name = (Url.host + Url.pathname + Url.search).replace(/\/$/, '');
 
     if (!value.match(urlRegExp)) alert('Url is not valid');
     else if (links.find((link) => link.url === url)) alert('Url already exist');
@@ -55,7 +55,7 @@ const inputSetting = (e, complete, setComplete, submitDispatch, links = []) => {
       submitDispatch(
         addToLibrary({
           url,
-          name: url,
+          name,
           visited: 0,
           dateCreated: Date.now()
         })
