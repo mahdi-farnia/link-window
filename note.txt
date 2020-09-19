@@ -2,6 +2,7 @@ add:
     rename*
     remove*
     visited*
+    localStorage*
     group by
     filter by
     google search
