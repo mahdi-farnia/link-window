@@ -6,3 +6,4 @@ add:
     group by
     filter by
     google search
+    make it pwa
