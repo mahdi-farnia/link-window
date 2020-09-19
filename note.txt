@@ -7,3 +7,11 @@ add:
     filter by
     google search
     make it pwa
+
+other:
+    Google Serach API
+        APIKEY = 'AIzaSyAA0muLeuu726-eSkL7gwXeq-fJJ-AGa5o';
+        <script src="https://apis.google.com/js/api.js"></script>
+
+question:
+    فانکشن های سرچ تایپ و اینپوت ستینگ رو داخل کامپوننت بنویسم یا بیرون؟
