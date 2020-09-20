@@ -19,13 +19,7 @@ export default function LibraryItem({ name, url }) {
             json.icons.find((icon) => icon.type === 'image/x-icon') ||
             json.icons.find((icon) => icon.type === 'image/png');
           // Getting Icon
-          fetch(iconObj.src)
-            .then((res) => res.blob())
-            .then((blob) => {
-              const src = URL.createObjectURL(blob);
-              setIcon({ src, isLoading: false });
-            })
-            .catch((e) => setIcon({ src: '', isLoading: false }));
+          setIcon({ src: iconObj.src, isLoading: false });
         } else setIcon({ src: '', isLoading: false });
       })
       .catch((e) => setIcon({ src: '', isLoading: false }));
@@ -41,15 +35,15 @@ export default function LibraryItem({ name, url }) {
       </span>
       <a
         href={redirectUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="url-name"
+        target='_blank'
+        rel='noopener noreferrer'
+        className='url-name'
       >
         {name || 'NO NAME'}
       </a>
-      <div className="link-item__option">
-        <span className="rename" title="Rename Link"></span>
-        <span className="delete" title="Delete Link"></span>
+      <div className='link-item__option'>
+        <span className='rename' title='Rename Link'></span>
+        <span className='delete' title='Delete Link'></span>
       </div>
     </li>
   );
