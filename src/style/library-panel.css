@@ -84,7 +84,7 @@
 }
 
 #close-library-panel .row-2 {
-  transform: rotate(-45deg) translateY(0);
+  transform: rotate(-45deg) translate(0.6px, 0);
   transform-origin: 40% 50%;
 }
 
@@ -192,10 +192,16 @@
   white-space: nowrap;
   color: inherit;
   padding-left: 40px;
-  transition: padding-left 0.3s ease;
+  transition: padding-left 0.3s ease, width 0.3s ease;
 }
 
 #links .url-name:hover {
+  padding-left: 45px;
+}
+
+#links li.rename-link-focused .url-name {
+  /* this width 225px + options width 105px */
+  width: 360px;
   padding-left: 45px;
 }
 

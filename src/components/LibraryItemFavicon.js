@@ -24,3 +24,5 @@ export default function LibraryItemFavicon({ icon, textIcon }) {
     </>
   );
 }
+
+React.memo(LibraryItemFavicon);
