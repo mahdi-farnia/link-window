@@ -3,6 +3,7 @@ add:
     remove*
     visited*
     localStorage*
+    context menu on links
     group by
     filter by
     google search
