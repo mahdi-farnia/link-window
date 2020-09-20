@@ -146,24 +146,34 @@
   position: relative;
 }
 
-#links .favicon {
+#links .favicon,
+#links .img-favicon {
   width: 25px;
   height: 25px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  line-height: 25px;
-  font-weight: 600;
   position: absolute;
   top: 10px;
   left: 5px;
   border-radius: 50%;
   pointer-events: none;
-  text-transform: capitalize;
   transition: left 0.3s ease;
 }
 
+#links .favicon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  line-height: 25px;
+  font-weight: 600;
+  text-transform: capitalize;
+  z-index: 1;
+}
+
+#links .img-favicon {
+  object-fit: contain;
+}
+
 #links .favicon.loading {
+  background-image: url('../assets/loading.svg');
   transform: rotate(0deg);
   background-size: 80%;
   animation: loading 0.6s linear infinite;
