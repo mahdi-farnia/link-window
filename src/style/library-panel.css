@@ -181,12 +181,12 @@
   overflow: hidden;
   white-space: nowrap;
   color: inherit;
-  padding-left: 35px;
+  padding-left: 40px;
   transition: padding-left 0.3s ease;
 }
 
 #links .url-name:hover {
-  padding-left: 40px;
+  padding-left: 45px;
 }
 
 #links .link-item__option {
