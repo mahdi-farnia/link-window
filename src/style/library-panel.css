@@ -229,3 +229,19 @@
   background-size: 25px;
   cursor: pointer;
 }
+
+/* Cover */
+.library-panel__cover {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* highest is 10 */
+  z-index: 9;
+}
+
+#library-panel.close + .library-panel__cover {
+  pointer-events: none;
+  visibility: hidden;
+}
