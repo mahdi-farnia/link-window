@@ -205,6 +205,18 @@
   padding-left: 45px;
 }
 
+#links li.delete-link {
+  min-width: 0;
+  overflow: hidden;
+  animation: delete-from-library 0.5s ease-in-out forwards;
+}
+
+@keyframes delete-from-library {
+  100% {
+    transform: scaleX(0) translateX(-360px);
+  }
+}
+
 #links .link-item__option {
   width: 105px;
   height: 100%;

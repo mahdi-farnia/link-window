@@ -4,7 +4,8 @@ import { renameLink, removeFromLibrary } from '../actions';
 import Favicon from './LibraryItemFavicon';
 
 const classLists = {
-  renameLinkFocused: 'rename-link-focused'
+  renameLinkFocused: 'rename-link-focused',
+  deleteLink: 'delete-link'
 };
 
 export default function LibraryItem({ name, url }) {
@@ -44,44 +45,62 @@ export default function LibraryItem({ name, url }) {
       <Favicon icon={icon} textIcon={textIcon} />
       <a
         href={redirectUrl}
-        target='_blank'
-        rel='noopener noreferrer'
-        className='url-name'
+        target="_blank"
+        rel="noopener noreferrer"
+        className="url-name"
         ref={linkEl}
       >
         {name || 'NO NAME'}
       </a>
-      <div className='link-item__option'>
+      <div className="link-item__option">
         <span
-          className='rename'
-          title='Rename Link'
+          className="rename"
+          title="Rename Link"
           onClick={() => {
-            linkEl.current.contentEditable = true;
-            linkEl.current.focus();
+            const anchor = linkEl.current;
+            anchor.contentEditable = true;
+            anchor.focus();
             // Selects Content
             const range = document.createRange(),
               select = window.getSelection();
-            range.selectNodeContents(linkEl.current);
+            range.selectNodeContents(anchor);
             select.removeAllRanges();
             select.addRange(range);
             //
             itemEl.current.classList.add(classLists.renameLinkFocused);
-            linkEl.current.addEventListener('keydown', function (e) {
+            const prevName = anchor.textContent;
+            anchor.addEventListener('keydown', function (e) {
               if (e.which === 13 || e.key === 'Enter') {
                 e.preventDefault();
                 this.blur();
               }
             });
-            linkEl.current.addEventListener('blur', () => {
+            anchor.addEventListener('blur', () => {
+              const newName = anchor.textContent;
+              anchor.contentEditable = false;
               itemEl.current.classList.remove(classLists.renameLinkFocused);
-              linkEl.current.contentEditable = false;
-              dispatch(
-                renameLink(linkEl.current.href, linkEl.current.textContent)
-              );
+              if (!newName.trim()) {
+                alert('This is not a valid name');
+                anchor.textContent = prevName;
+                return;
+              }
+              dispatch(renameLink(anchor.href, newName));
             });
           }}
         ></span>
-        <span className='delete' title='Delete Link' onClick={() => {}}></span>
+        <span
+          className="delete"
+          title="Delete Link"
+          onClick={() => {
+            const anchor = linkEl.current,
+              deleteModal = window.confirm('Are you sure?');
+            if (!deleteModal) return;
+            itemEl.current.classList.add(classLists.deleteLink);
+            itemEl.current.addEventListener('animationend', () => {
+              dispatch(removeFromLibrary(anchor.href));
+            });
+          }}
+        ></span>
       </div>
     </li>
   );
