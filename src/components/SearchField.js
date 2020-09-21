@@ -47,7 +47,12 @@ const inputSetting = (e, complete, setComplete, submitDispatch, links = []) => {
       ),
       url = Url.href,
       // Prevent Write HTTP/HTTPS
-      name = (Url.host + Url.pathname + Url.search).replace(/\/$/, '');
+      name = (
+        Url.host +
+        (Url.port && ':' + Url.port) +
+        Url.pathname +
+        Url.search
+      ).replace(/\/$/, '');
 
     if (!value.match(urlRegExp)) alert('Url is not valid');
     else if (links.find((link) => link.url === url)) alert('Url already exist');
@@ -74,21 +79,21 @@ export default function SearchField() {
     dispatch = useDispatch();
 
   return (
-    <section id="search-field">
-      <div className="input-wrapper">
+    <section id='search-field'>
+      <div className='input-wrapper'>
         <button
-          className="icon"
-          title="Clear Field"
+          className='icon'
+          title='Clear Field'
           onClick={() => {
             input.current.focus();
             input.current.value = '';
           }}
         ></button>
-        <span className="suggest" ref={suggestion}></span>
+        <span className='suggest' ref={suggestion}></span>
         <input
-          type="text"
-          id="url-field"
-          placeholder="Add Url"
+          type='text'
+          id='url-field'
+          placeholder='Add Url'
           ref={input}
           onKeyDown={(e) =>
             inputSetting(e, autoComplete, setAutoComplete, dispatch, links)
