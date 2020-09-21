@@ -47,12 +47,7 @@ const inputSetting = (e, complete, setComplete, submitDispatch, links = []) => {
       ),
       url = Url.href,
       // Prevent Write HTTP/HTTPS
-      name = (
-        Url.host +
-        (Url.port && ':' + Url.port) +
-        Url.pathname +
-        Url.search
-      ).replace(/\/$/, '');
+      name = (Url.host + Url.pathname + Url.search).replace(/\/$/, '');
 
     if (!value.match(urlRegExp)) alert('Url is not valid');
     else if (links.find((link) => link.url === url)) alert('Url already exist');
