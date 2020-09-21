@@ -19,3 +19,7 @@ question:
     react.memo
     رو یه بار دیگه توضیح بدید؟
     منظور از تغییر پراپ فقط چیه؟ غیر از پراپ چی تغییر می کنه؟
+    چجوری از 
+    localStorage
+    با ریداکس استفاده کنیم؟
+    indexedDB or localStorage?
